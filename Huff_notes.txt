@@ -1,0 +1,58 @@
+Huffman Encoding Algorithm
+Calculate Frequency of Each Character:
+
+Scan the text and count the occurrences of each character.
+Store these frequencies in a dictionary or a counter (e.g., {'a': 5, 'b': 2, 'c': 1, ...}).
+
+Build a Min-Heap (Priority Queue):
+Create a min-heap where each node contains a character and its frequency.
+For a frequency table, each character is represented as a node in the heap with its frequency as the key.
+The min-heap helps efficiently access the two lowest-frequency nodes.
+
+Construct the Huffman Tree:
+Repeat until there is only one node left in the heap:
+	Remove (pop) the two nodes with the lowest frequencies.
+	Create a new node with a frequency equal to the sum of the two nodes.
+	Assign the first node as the left child and the second as the right child.
+	Insert this new node back into the heap.
+The remaining node in the heap becomes the root of the Huffman Tree.
+
+Generate Codes by Traversing the Huffman Tree:
+Traverse the tree from the root to each leaf node (character node).
+Assign a binary code to each character:
+	Append '0' for a left branch and '1' for a right branch.
+Store the binary code for each character in a dictionary.
+
+Encode the Text:
+Replace each character in the text with its binary code.
+The encoded text is now a binary string of 0s and 1s.
+
+Decode the Encoded Text (if needed):
+Use the binary string and the Huffman Tree or code dictionary to map binary sequences back to characters.
+Traverse the binary string to decode it by following the tree based on 0s (left) and 1s (right) until reaching a leaf node (character).
+
+
+
+Huffman Encoding is a method of data compression. It compresses data by reducing the number of bits used to represent each character in a text, especially useful for files with repetitive characters. This is a lossless compression technique, meaning you can fully recover the original data from the compressed data.
+
+Huffman Encoding reduces the file size by giving shorter codes to more frequent characters and longer codes to less frequent ones. This way, the total number of bits needed to store the data is minimized, saving storage space and speeding up transmission.
+
+Advantages of Huffman Encoding:
+Lossless Compression: It perfectly reconstructs the original data without any loss.
+Efficient for Variable Frequencies: It compresses data effectively when characters have differing frequencies.
+Optimal Code Length: It minimizes the number of bits required for encoding data.
+Prefix-Free: Ensures no ambiguity during decoding.
+Widely Used: Simple and widely used for text and file compression.
+
+Disadvantages of Huffman Encoding:
+Requires Frequency Calculation: Needs an initial pass to calculate frequencies before encoding.
+Not Efficient for Small Files: For small datasets, the overhead of storing frequencies may outweigh the compression benefits.
+Fixed-Length Codes: Once the tree is built, the codes are fixed and cannot adapt dynamically.
+Complex for Real-Time Compression: Not suitable for real-time applications with constantly changing data.
+
+Applications of Huffman Encoding:
+File Compression: Used in ZIP, GZIP, and other file compression formats.
+Image Compression: Employed in JPEG image compression.
+Audio Compression: Utilized in MP3 and other audio formats.
+Data Transmission: Helps in reducing data size during transmission over networks.
+Text Compression: Applied in various text file compression algorithms.
